@@ -12,18 +12,18 @@ def check_tcp(host, port):
         else:
             return f"[CLOSED] {host}:{port}"
     except ValueError:
-        return "Ошибка: Port должен быть числом"
+        return "Error: Port must be a number"
     except Exception as e:
-        return f"Ошибка: {e}"
+        return f"Error: {e}"
 def check_port(self):
     host = self.hostInput.text()
     port = self.portInput.text()
 
-    self.console.log(f"> Проверка {host}:{port}")
+    self.console.log(f"> Checking {host}:{port}")
 
     if check_tcp(host, port):
-        self.statusLabel.setText("Открыт ✅")
-        self.console.log("> Соединение установлено")
+        self.statusLabel.setText("Open ✅")
+        self.console.log("> Connection successful")
     else:
         self.statusLabel.setText("Закрыт ❌")
-        self.console.log("> Соединение не удалось")
+        self.console.log("> Connection failed")

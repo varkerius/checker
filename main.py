@@ -3,11 +3,11 @@
 from PyQt6 import QtWidgets, uic
 from PyQt6.QtCore import Qt
 import sys
-from checker import check_tcp  # твоя логика проверки TCP
+from checker import check_tcp 
 from console_window import ConsoleWindow
 
 
-class MainWindow(QtWidgets.QWidget):  # или QMainWindow
+class MainWindow(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("ui/main_window.ui", self)
@@ -15,18 +15,18 @@ class MainWindow(QtWidgets.QWidget):  # или QMainWindow
         self.console = ConsoleWindow()
         self.openConsoleButton.clicked.connect(self.console.show)
 
-        # Кнопка
+        # buttom
         self.checkButton.clicked.connect(self.run_check)
 
-        # Стили "старого терминала"
-        self.setStyleSheet("background-color: black;")  # фон всего окна
+        # style
+        self.setStyleSheet("background-color: black;")  # green window
 
-        # Все QLabel и QLineEdit зелёные с моноширинным шрифтом
+        # all QLabel and QLineEdit with green 
         widgets = [
-            self.findChild(QtWidgets.QLabel, "label"),       # Заголовок TCP Checker
+            self.findChild(QtWidgets.QLabel, "label"),       # name TCP Checker
             self.findChild(QtWidgets.QLabel, "label_2"),     # Host
             self.findChild(QtWidgets.QLabel, "label_3"),     # Port
-            self.findChild(QtWidgets.QLabel, "statusLabel"), # Статус
+            self.findChild(QtWidgets.QLabel, "statusLabel"), # status
             self.findChild(QtWidgets.QLineEdit, "hostInput"),
             self.findChild(QtWidgets.QLineEdit, "portInput")
         ]
@@ -37,7 +37,7 @@ class MainWindow(QtWidgets.QWidget):  # или QMainWindow
                 font-family: 'Courier';
             """)
 
-        # Кнопка в зелёном стиле
+        # buttom in green style
         self.checkButton.setStyleSheet("""
             color: black;
             background-color: #00FF00;
@@ -54,7 +54,7 @@ class MainWindow(QtWidgets.QWidget):  # или QMainWindow
         host = self.hostInput.text()
         port = self.portInput.text()
         result = check_tcp(host, port)
-        # Выводим результат в статусLabel
+        # result in statusLabel
         self.statusLabel.setText(result)
 
 if __name__ == "__main__":
