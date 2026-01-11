@@ -1,3 +1,13 @@
+# Virtual environment
 venv/
+
+# Python cache
 __pycache__/
-.env
+*.pyc
+
+# Qt
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
